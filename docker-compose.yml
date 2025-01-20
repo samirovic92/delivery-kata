@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: kata-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  axon-server:
+    image: axoniq/axonserver
+    container_name: axon_server
+    ports:
+      - "8024:8024"   # HTTP UI
+      - "8124:8124"   # gRPC
+      - "8224:8224"   # Control port
+    volumes:
+      - axon_data:/data
+      - axon_events:/eventdata
+    environment:
+      AXONIQ_AXONSERVER_NAME: axon-server
+      AXONIQ_AXONSERVER_STANDALONE: TRUE
+      AXONIQ_AXONSERVER_DEVMODE: "true" # Development mode, no clustering
+    restart: unless-stopped
+
+  delivery-app:
+    image: delivery-app
+    container_name: delivery-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - axon-server
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DATASOURCE_USER: admin
+      DATASOURCE_PASSWORD: admin
+      DATASOURCE_URL: postgres
+
+volumes:
+  postgres_data:
+  axon_data:
+  axon_events:
