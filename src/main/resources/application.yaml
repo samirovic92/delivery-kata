@@ -3,7 +3,10 @@ spring:
     name: delivery-service
 
   datasource:
-    url: jdbc:postgresql://${DATASOURCE_URL:'localhost'}:5432/kata-db
-    username: ${DATASOURCE_USER}
-    password: ${DATASOURCE_PASSWORD}
+    url: jdbc:postgresql://${DATASOURCE_URL:localhost}:5432/kata-db
+    username: ${DATASOURCE_USER:admin}
+    password: ${DATASOURCE_PASSWORD:admin}
     driver-class-name: org.postgresql.Driver
+
+  flyway:
+    enabled: true
