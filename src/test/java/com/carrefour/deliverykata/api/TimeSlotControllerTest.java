@@ -27,7 +27,7 @@ class TimeSlotControllerTest {
 
     @Test
     @WithMockUser(username = "test-client", roles = {"CLIENT"})
-    void testGetTimeSlots() {
+    void test_Get_Time_Slots() {
         // Given
 
         TimeSlot timeSlot1 = new TimeSlot(1L, LocalDateTime.of(2025, 1, 10, 10, 0), LocalDateTime.of(2025, 1, 10, 12, 0), false);

@@ -9,7 +9,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   flyway:
     enabled: true
 
@@ -17,3 +17,9 @@ spring:
     user:
       name: client1
       password: 1234
+
+axon:
+  eventhandling:
+    processors:
+      order-group:
+        mode: subscribing
