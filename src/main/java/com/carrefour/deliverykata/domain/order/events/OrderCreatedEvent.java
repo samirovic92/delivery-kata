@@ -1,7 +1,7 @@
 package com.carrefour.deliverykata.domain.order.events;
 
-import com.carrefour.deliverykata.domain.order.Order;
-import com.carrefour.deliverykata.domain.order.OrderStatus;
+import com.carrefour.deliverykata.domain.order.models.Order;
+import com.carrefour.deliverykata.domain.order.models.OrderStatus;
 
 import java.util.UUID;
 

@@ -1,6 +1,6 @@
 package com.carrefour.deliverykata.infrastructure.delivery;
 
-import com.carrefour.deliverykata.domain.delivery.DeliveryMode;
+import com.carrefour.deliverykata.domain.delivery.models.DeliveryMode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

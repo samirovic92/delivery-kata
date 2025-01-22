@@ -1,5 +1,7 @@
 package com.carrefour.deliverykata.domain.delivery;
 
+import com.carrefour.deliverykata.domain.delivery.models.DeliveryMode;
+import com.carrefour.deliverykata.domain.delivery.models.TimeSlot;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

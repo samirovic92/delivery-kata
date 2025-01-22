@@ -1,4 +1,4 @@
-package com.carrefour.deliverykata.domain.delivery;
+package com.carrefour.deliverykata.domain.delivery.models;
 
 public enum DeliveryMode {
     DRIVE,

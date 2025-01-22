@@ -1,7 +1,7 @@
 package com.carrefour.deliverykata.infrastructure.delivery;
 
-import com.carrefour.deliverykata.domain.delivery.DeliveryMode;
-import com.carrefour.deliverykata.domain.delivery.TimeSlot;
+import com.carrefour.deliverykata.domain.delivery.models.DeliveryMode;
+import com.carrefour.deliverykata.domain.delivery.models.TimeSlot;
 import com.carrefour.deliverykata.domain.delivery.TimeSlotRepository;
 import org.springframework.stereotype.Service;
 

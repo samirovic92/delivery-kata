@@ -1,6 +1,6 @@
 package com.carrefour.deliverykata.api.Dto;
 
-import com.carrefour.deliverykata.domain.delivery.TimeSlot;
+import com.carrefour.deliverykata.domain.delivery.models.TimeSlot;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

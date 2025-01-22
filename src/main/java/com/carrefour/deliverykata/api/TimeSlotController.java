@@ -1,7 +1,7 @@
 package com.carrefour.deliverykata.api;
 
 import com.carrefour.deliverykata.api.Dto.TimeSlotDto;
-import com.carrefour.deliverykata.domain.delivery.DeliveryMode;
+import com.carrefour.deliverykata.domain.delivery.models.DeliveryMode;
 import com.carrefour.deliverykata.domain.delivery.TimeSlotService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

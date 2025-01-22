@@ -1,7 +1,7 @@
 package com.carrefour.deliverykata.api;
 
-import com.carrefour.deliverykata.domain.delivery.DeliveryMode;
-import com.carrefour.deliverykata.domain.delivery.TimeSlot;
+import com.carrefour.deliverykata.domain.delivery.models.DeliveryMode;
+import com.carrefour.deliverykata.domain.delivery.models.TimeSlot;
 import com.carrefour.deliverykata.domain.delivery.TimeSlotService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,6 +5,7 @@ import com.carrefour.deliverykata.domain.common.models.FindTimeSlotResponse;
 import com.carrefour.deliverykata.domain.common.queries.FindTimeSlotQuery;
 import com.carrefour.deliverykata.domain.order.events.OrderCreatedEvent;
 import com.carrefour.deliverykata.domain.order.exceptions.OrderException;
+import com.carrefour.deliverykata.domain.order.models.Order;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.queryhandling.QueryGateway;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import static com.carrefour.deliverykata.domain.order.OrderStatus.*;
+import static com.carrefour.deliverykata.domain.order.models.OrderStatus.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

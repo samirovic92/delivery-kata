@@ -1,6 +1,6 @@
 package com.carrefour.deliverykata.infrastructure.order;
 
-import com.carrefour.deliverykata.domain.order.OrderStatus;
+import com.carrefour.deliverykata.domain.order.models.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

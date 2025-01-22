@@ -1,6 +1,6 @@
 package com.carrefour.deliverykata.infrastructure.order;
 
-import com.carrefour.deliverykata.domain.order.Order;
+import com.carrefour.deliverykata.domain.order.models.Order;
 import com.carrefour.deliverykata.domain.order.OrderRepository;
 import org.springframework.stereotype.Service;
 

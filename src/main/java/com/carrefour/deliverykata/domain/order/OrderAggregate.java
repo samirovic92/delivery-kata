@@ -2,6 +2,7 @@ package com.carrefour.deliverykata.domain.order;
 
 import com.carrefour.deliverykata.domain.order.commands.CreatOrderCommand;
 import com.carrefour.deliverykata.domain.order.events.OrderCreatedEvent;
+import com.carrefour.deliverykata.domain.order.models.OrderStatus;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;

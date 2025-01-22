@@ -1,4 +1,4 @@
-package com.carrefour.deliverykata.domain.delivery;
+package com.carrefour.deliverykata.domain.delivery.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.carrefour.deliverykata.infrastructure.order;
 
-import com.carrefour.deliverykata.domain.order.Order;
+import com.carrefour.deliverykata.domain.order.models.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.carrefour.deliverykata.domain.order.OrderStatus.CREATED;
+import static com.carrefour.deliverykata.domain.order.models.OrderStatus.CREATED;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("test")

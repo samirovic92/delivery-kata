@@ -2,7 +2,7 @@ package com.carrefour.deliverykata.domain.order;
 
 import com.carrefour.deliverykata.domain.order.commands.CreatOrderCommand;
 import com.carrefour.deliverykata.domain.order.events.OrderCreatedEvent;
-import com.carrefour.deliverykata.domain.order.exceptions.OrderException;
+import com.carrefour.deliverykata.domain.order.models.OrderStatus;
 import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
