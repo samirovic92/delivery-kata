@@ -7,6 +7,13 @@ spring:
     username: ${DATASOURCE_USER:admin}
     password: ${DATASOURCE_PASSWORD:admin}
     driver-class-name: org.postgresql.Driver
-
+  jpa:
+    hibernate:
+      ddl-auto: none
   flyway:
     enabled: true
+
+  security:
+    user:
+      name: client1
+      password: 1234
