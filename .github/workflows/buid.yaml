@@ -1,4 +1,4 @@
-name: Fraud CI build
+name: Delivery CI build
 
 on:
   workflow_run:
