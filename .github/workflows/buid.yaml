@@ -21,7 +21,7 @@ jobs:
         run: mvn test
       - name: Build
         run: mvn -D skipTests package --file pom.xml
-      - name: Publish package
-        run: mvn jar:jar deploy:deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Publish package
+      #   run: mvn jar:jar deploy:deploy
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
