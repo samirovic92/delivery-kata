@@ -5,7 +5,7 @@
 1. **Compile the application :**
 Run the following command to clean and package the application:
   ```
-mvn clean package
+./mvnw  clean package
   ```
 2. **Run Docker compose**
 Start the necessary Docker containers using:
@@ -15,13 +15,13 @@ docker compose up
 3. **Launch the application**
 Start the application using the Spring Boot plugin:
   ```
-mvn spring-boot:run
+./mvnw  spring-boot:run
   ```
 4. **Access the Application** :
    
 **REST API Documentation:** Open the Swagger UI in your browser:
    ```
-    http://localhost:8080/swagger-ui/index.html
+    http://localhost:8080/swagger-ui.html
    ```
 
 ## Frameworks and Tools
