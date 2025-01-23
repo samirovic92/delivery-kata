@@ -1,7 +1,12 @@
 package com.carrefour.deliverykata.domain.delivery;
 
+import com.carrefour.deliverykata.domain.common.models.FindTimeSlotResponse;
+import com.carrefour.deliverykata.domain.common.queries.FindTimeSlotQuery;
+import com.carrefour.deliverykata.domain.delivery.events.TimeSlotReservedEvent;
 import com.carrefour.deliverykata.domain.delivery.models.DeliveryMode;
 import com.carrefour.deliverykata.domain.delivery.models.TimeSlot;
+import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Service;
 
 import java.time.Clock;
@@ -34,5 +39,17 @@ public class TimeSlotService {
         }
 
         return timeSlotRepository.findAvailableTimeSlotByMode(deliveryMode);
+    }
+
+    @QueryHandler
+    public FindTimeSlotResponse findTimeSlot(FindTimeSlotQuery query) {
+        return timeSlotRepository.findById(query.timeSlotId())
+                .map(timeSlot -> new FindTimeSlotResponse(timeSlot.getId(), timeSlot.getReserved()))
+                .orElse(null);
+    }
+
+    @EventHandler
+    public void on(TimeSlotReservedEvent event) {
+        timeSlotRepository.reserveTimeSlot(event.timeSlotId());
     }
 }

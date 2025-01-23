@@ -1,5 +1,8 @@
 package com.carrefour.deliverykata.domain.delivery;
 
+import com.carrefour.deliverykata.domain.common.models.FindTimeSlotResponse;
+import com.carrefour.deliverykata.domain.common.queries.FindTimeSlotQuery;
+import com.carrefour.deliverykata.domain.delivery.events.TimeSlotReservedEvent;
 import com.carrefour.deliverykata.domain.delivery.models.DeliveryMode;
 import com.carrefour.deliverykata.domain.delivery.models.TimeSlot;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.*;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -112,5 +116,46 @@ class TimeSlotServiceTest {
         // Then
         assertThat(timeSlots).isEmpty();
         verify(timeSlotRepository).findAvailableTimeSlotByMode(DeliveryMode.DRIVE);
+    }
+
+    @Test
+    public void should_find_time_slot() {
+        // Given
+        var findTimeSlotQuery = new FindTimeSlotQuery(1L);
+        var expectedTimeSlot = new FindTimeSlotResponse(1L, true);
+        when(timeSlotRepository.findById(1L))
+                .thenReturn(Optional.of(new TimeSlot(1L, LocalDateTime.now(), LocalDateTime.now(), true)));
+
+        // When
+        var timeSlot = timeSlotService.findTimeSlot(findTimeSlotQuery);
+
+        // Then
+        assertThat(timeSlot).isEqualTo(expectedTimeSlot);
+    }
+
+    @Test
+    public void should_return_null_if_no_time_slot_exist() {
+        // Given
+        var findTimeSlotQuery = new FindTimeSlotQuery(1L);
+        var expectedTimeSlot = new FindTimeSlotResponse(1L, true);
+        when(timeSlotRepository.findById(1L)).thenReturn(Optional.empty());
+
+        // When
+        var timeSlot = timeSlotService.findTimeSlot(findTimeSlotQuery);
+
+        // Then
+        assertThat(timeSlot).isNull();
+    }
+
+    @Test
+    public void should_reserve_time_slot() {
+        // Given
+        var event = new TimeSlotReservedEvent(1l, true);
+
+        // When
+        timeSlotService.on(event);
+
+        // Then
+        verify(timeSlotRepository).reserveTimeSlot(1l);
     }
 }

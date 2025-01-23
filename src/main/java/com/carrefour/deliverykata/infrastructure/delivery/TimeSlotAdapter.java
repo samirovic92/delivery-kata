@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TimeSlotAdapter implements TimeSlotRepository {
@@ -33,5 +34,21 @@ public class TimeSlotAdapter implements TimeSlotRepository {
         return timeSlotEntities.stream()
                 .map(TimeSlotEntity::toDomain)
                 .toList();
+    }
+
+    @Override
+    public Optional<TimeSlot> findById(Long timeSlotId) {
+        return jpaTimeSlotRepository.findById(timeSlotId)
+                .map(TimeSlotEntity::toDomain);
+    }
+
+    @Override
+    public void reserveTimeSlot(Long timeSlotId) {
+        var timeSlotOptional = jpaTimeSlotRepository.findById(timeSlotId);
+        if (timeSlotOptional.isPresent()) {
+            var timeSlotEntity = timeSlotOptional.get();
+            timeSlotEntity.setReserved(true);
+            jpaTimeSlotRepository.save(timeSlotEntity);
+        }
     }
 }

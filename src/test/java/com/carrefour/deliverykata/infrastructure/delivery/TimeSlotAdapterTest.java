@@ -12,6 +12,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.time.*;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -122,5 +123,50 @@ class TimeSlotAdapterTest {
 
         // Then
         assertThat(timeSlots).isEmpty();
+    }
+
+    @Test
+    public void should_find_time_slot_by_id() {
+        // Given
+        var createTimeSlot = jpaTimeSlotRepository.save(
+                new TimeSlotEntity(
+                        DeliveryMode.DRIVE,
+                        LocalDateTime.now(clock),
+                        LocalDateTime.now(clock).plusMinutes(10),
+                        false
+                )
+        );
+        var startTime = LocalDateTime.now(clock);
+        var endTime = LocalDateTime.now(clock).plusMinutes(30);
+        var expectedTimeSlot = new TimeSlot(createTimeSlot.getId(), startTime, endTime, false);
+
+        // When
+        var timeSlot = timeSlotAdapter.findById(createTimeSlot.getId());
+
+        // Then
+        assertThat(timeSlot).isEqualTo(Optional.of(expectedTimeSlot));
+    }
+
+    @Test
+    public void should_reserve_time_slot() {
+        // Given
+        var createTimeSlot = jpaTimeSlotRepository.save(
+                new TimeSlotEntity(
+                        DeliveryMode.DRIVE,
+                        LocalDateTime.now(clock),
+                        LocalDateTime.now(clock).plusMinutes(10),
+                        false
+                )
+        );
+        var startTime = LocalDateTime.now(clock);
+        var endTime = LocalDateTime.now(clock).plusMinutes(30);
+        var expectedTimeSlot = new TimeSlot(createTimeSlot.getId(), startTime, endTime, false);
+
+        // When
+        timeSlotAdapter.reserveTimeSlot(createTimeSlot.getId());
+
+        // Then
+        var result = jpaTimeSlotRepository.findById(createTimeSlot.getId()).get();
+        assertThat(result.isReserved()).isEqualTo(true);
     }
 }
