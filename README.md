@@ -34,4 +34,4 @@ Start the application using the Spring Boot plugin:
 - Axon framework (event sourcing)
 - Flyway (database migration tool)
 - OpenAPi (Documenting the REST API)
-- githAction (CI/CD)
+- githubAction (CI/CD)
