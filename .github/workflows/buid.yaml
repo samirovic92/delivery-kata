@@ -1,10 +1,6 @@
 name: Delivery CI build
 
 on:
-  workflow_run:
-    workflows: [ "Delivery CI build" ]
-    types:
-      - completed
   push:
     branches: [ "main" ]
   pull_request:
